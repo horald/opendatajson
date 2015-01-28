@@ -1,0 +1,5 @@
+var menu = {"daten": [
+        {"text": "Bürgerhaushalt",      "link":"classes/showtabextern.html"},
+        {"text": "About",               "link":"classes/about.html"}
+    ]
+};

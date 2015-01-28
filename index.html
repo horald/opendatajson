@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Opendata</title>
+
+    <!-- Bootstrap -->
+    <link href="includes/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Menüdaten -->
+    <script type="text/javascript" src="data/menu.json"></script>
+
+  </head>
+  <body>
+    <h1 align="center">OpendataApp</h1>
+
+    <script type="text/javascript">
+      menu.daten.forEach(function(entry) {
+        sbez=entry.text;
+        if (sbez) { 
+          sbez = sbez.replace("Ã¼","ü"); 
+        }
+        document.write('<a href="'+entry.link+'" class="btn btn-default btn-lg btn-block" role="button">'+sbez+'</a>');
+      });
+    </script>
+
+  </body>
+</html>
