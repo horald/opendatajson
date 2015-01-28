@@ -1,7 +1,7 @@
     $(function(){
  
-     //var url = 'https://buergerhaushalt.stadt-koeln.de/2015/json/';
-     var url = '../data/opendata.json';
+     var url = 'https://buergerhaushalt.stadt-koeln.de/2015/json/';
+     //var url = '../data/opendata.json';
      $.getJSON(url,function(mydata){
         console.log('success');
 
