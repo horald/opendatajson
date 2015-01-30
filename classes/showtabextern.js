@@ -14,14 +14,14 @@
         dochtml = dochtml + '<th>Titel</th>';
         dochtml = dochtml + '</tr>';
 
+        var index = 0;
 	mydata.proposals.forEach(function(entry) {
-	//mydata.properties[0].forEach(function(entry) {
+          index = index + 1;
         
           lweiter=true;
           if (lweiter) {
             dochtml = dochtml + '<tr>';
-            dochtml = dochtml + '<td>'+entry.proposal.title+'</td>';
-//            dochtml = dochtml + '<td>'+entry.attributes.Stadtbezirk+'</td>';
+            dochtml = dochtml + '<td><a href="showdata.html?id='+index+'">'+entry.proposal.title+'</a></td>';
             dochtml = dochtml + '</tr>';
           }	
 	});
