@@ -39,11 +39,18 @@ function get_data() {
 
         entry=esriObject.proposals[id-1];
         dochtml = dochtml + '<tr><td>Nr:</td><td>'+entry.proposal.proposal_id+'</td></tr>';
-        dochtml = dochtml + '<tr><td>Titel:</td><td>'+entry.proposal.title+'</td></tr>';
         dochtml = dochtml + '<tr><td>Erzeugt:</td><td>'+entry.proposal.created+'</td></tr>';
+        dochtml = dochtml + '<tr><td>nid:</td><td>'+entry.proposal.nid+'</td></tr>';
+        dochtml = dochtml + '<tr><td>Titel:</td><td>'+entry.proposal.title+'</td></tr>';
         dochtml = dochtml + '<tr><td>Kategorie:</td><td>'+entry.proposal.category+'</td></tr>';
         dochtml = dochtml + '<tr><td>Typ:</td><td>'+entry.proposal.type+'</td></tr>';
         dochtml = dochtml + '<tr><td>Ort:</td><td>'+entry.proposal.district+'</td></tr>';
+        dochtml = dochtml + '<tr><td>Pfad:</td><td>'+entry.proposal.path+'</td></tr>';
+        dochtml = dochtml + '<tr><td>Dafür:</td><td>'+entry.proposal.votesPro+'</td></tr>';
+        dochtml = dochtml + '<tr><td>Dagegen:</td><td>'+entry.proposal.votesContra+'</td></tr>';
+        dochtml = dochtml + '<tr><td>Anzahl Kommentare:</td><td>'+entry.proposal.commentsCount+'</td></tr>';
+        strurl=escape(entry.proposal.title);
+        dochtml = dochtml + '<tr><td>Kommentarverweis:</td><td><a href="showcomments.html?nid='+entry.proposal.nid+'&comment='+strurl+'">'+entry.proposal.commentsLink+'</a></td></tr>';
 
         dochtml = dochtml + '</table>';
         newdiv.innerHTML = dochtml;
