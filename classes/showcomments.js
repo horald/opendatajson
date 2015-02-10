@@ -1,9 +1,4 @@
-    $(function(){
- 
-     var nid = GET('nid');
-     var url = '../data/comments'+nid+'.json';
-     //var url = 'https://buergerhaushalt.stadt-koeln.de/2015/json/comments/1400';
-     $.getJSON(url,function(mydata){
+function cbfunc(mydata) { 
         console.log('success');
 
         var ni = document.getElementById('mydiv');
@@ -12,7 +7,7 @@
         var nid = GET('nid');
 
         dochtml = 'Nr.:'+nid;
-        dochtml = dochtml + '<h2>'+decodeURI(GET('comment'))+'</h2>';
+        dochtml = dochtml + '<h2>'+decodeURI(GET('kommentar'))+'</h2>';
 
         dochtml = dochtml + '<table class="table">';
         dochtml = dochtml + '<tr>';
@@ -43,7 +38,18 @@
         newdiv.innerHTML = dochtml;
         ni.appendChild(newdiv);
 
-      }).error(function(){
-        console.log('error');
-      });
-    });
+}
+
+var nid = GET('nid');
+//var url = '../data/comments'+nid+'.json';
+var url = 'http://json2jsonp.com/?url=https://buergerhaushalt.stadt-koeln.de/2015/json/comments/'+nid+'&callback=cbfunc';
+console.log(url);
+$.ajax({
+ type: 'GET',
+ url: url,
+  jsonp:false,
+  dataType :"jsonp",
+ crossDomain: true,
+ processData: true
+});
+

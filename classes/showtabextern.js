@@ -1,8 +1,4 @@
-    $(function(){
- 
-     //var url = 'https://buergerhaushalt.stadt-koeln.de/2015/json/';
-     var url = '../data/opendata.json';
-     $.getJSON(url,function(mydata){
+function cbfunc(mydata) { 
         console.log('success');
 
         var ni = document.getElementById('mydiv');
@@ -34,7 +30,14 @@
         newdiv.innerHTML = dochtml;
         ni.appendChild(newdiv);
 
-      }).error(function(){
-        console.log('error');
-      });
-    });
+}
+
+var url = "http://json2jsonp.com/?url=http://buergerhaushalt.stadt-koeln.de/2015/json&callback=cbfunc"
+$.ajax({
+ type: 'GET',
+ url: url,
+  jsonp:false,
+  dataType :"jsonp",
+ crossDomain: true,
+ processData: true
+});

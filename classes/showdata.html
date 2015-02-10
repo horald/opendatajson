@@ -14,7 +14,6 @@
      $(document).ready(function(){
 function get_data() {
    //var url = 'https://buergerhaushalt.stadt-koeln.de/2015/json/';
-   //var url = 'http://geoportal1.stadt-koeln.de/ArcGIS/rest/services/66/Parkscheinautomaten/MapServer/0/query?text=&geometry=&geometryType=esriGeometryPoint&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&objectIds=&where=id%20is%20not%20null&time=&returnCountOnly=false&returnIdsOnly=false&returnGeometry=true&maxAllowableOffset=&outSR=4326&outFields=*&f=json';	
    var url = '../data/opendata.json';
    $.ajax({
        url: url,
@@ -22,6 +21,7 @@ function get_data() {
        error: function(xhr, status, error) {
            alert(error.message);
        },
+
        success: function(esriObject){
         //gcFeats = jsonconverter.toGeoJson(esriObject);
        	console.log(JSON.stringify(esriObject));
@@ -50,13 +50,13 @@ function get_data() {
         dochtml = dochtml + '<tr><td>Dagegen:</td><td>'+entry.proposal.votesContra+'</td></tr>';
         dochtml = dochtml + '<tr><td>Anzahl Kommentare:</td><td>'+entry.proposal.commentsCount+'</td></tr>';
         strurl=escape(entry.proposal.title);
-        dochtml = dochtml + '<tr><td>Kommentarverweis:</td><td><a href="showcomments.html?nid='+entry.proposal.nid+'&comment='+strurl+'">'+entry.proposal.commentsLink+'</a></td></tr>';
+        dochtml = dochtml + '<tr><td>Kommentarverweis:</td><td><a href="showcomments.html?nid='+entry.proposal.nid+'&kommentar='+strurl+'">'+entry.proposal.commentsLink+'</a></td></tr>';
 
         dochtml = dochtml + '</table>';
         newdiv.innerHTML = dochtml;
         ni.appendChild(newdiv);
 
-       }
+       },
    });
    return false;
 }
